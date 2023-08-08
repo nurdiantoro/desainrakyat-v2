@@ -1,0 +1,89 @@
+:root {
+    --warna-01: #3A77BB;
+    --warna-02: #40BFEF;
+    --tokopedia: #84C468;
+    --whatsapp: #0DC143;
+    --black-45: #8C9194;
+    --black-60: #6C6C6C;
+    --black-90: #363535;
+    --white-01: #EDFBFF;
+}
+
+/* Header -> Owl Carousel */
+#header .owl-nav {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#header .owl-nav .owl-prev,
+#header .owl-nav .owl-next {
+    position: absolute;
+    bottom: -2rem;
+    padding: 2rem 1.2rem !important;
+    background-color: var(--warna-02);
+    display: inline-block;
+    border-radius: 10px;
+    color: white;
+    opacity: 0.8;
+}
+
+#header .owl-nav .owl-prev:hover,
+#header .owl-nav .owl-next:hover {
+    opacity: 1;
+}
+
+#header .owl-nav .owl-prev {
+    left: 0;
+    transform: translateX(-50%);
+}
+
+#header .owl-nav .owl-next {
+    right: 0;
+    transform: translateX(50%);
+}
+
+#header .animasi-move {
+    animation: move var(--durasi) ease-in-out infinite;
+    /* transform: translateY(50px); */
+}
+
+.limit-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.limit-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.limit-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.gradient{
+    background: linear-gradient(90deg, var(--warna-01), var(--warna-02));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Animation */
+@keyframes move {
+    0% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(30px)
+    }
+
+    100% {
+        transform: translateY(0px)
+    }
+}
