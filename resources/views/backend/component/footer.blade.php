@@ -1,16 +1,3 @@
-</div>
-</div>
-
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright my-auto text-center">
-            <span>Copyright &copy; Desain Rakyat <?= date('Y') ?></span>
-        </div>
-    </div>
-</footer>
-</div>
-</div>
-
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -29,18 +16,34 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="{{ url('logout') }}">Logout</a>
             </div>
         </div>
     </div>
 </div>
 
-<script src="/backend/js/bootstrap.bundle.min.js"></script>
-<script src="/backend/js/jquery.easing.min.js"></script>
-<script src="/backend/js/Chart.min.js"></script>
-<script src="/backend/js/sb-admin-2.min.js"></script>
-<script src="/backend/js/demo/chart-area-demo.js"></script>
-<script src="/backend/js/demo/chart-pie-demo.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+</script>
+
+<!-- Core plugin JavaScript-->
+<script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
+
+<!-- Page level plugins -->
+<script src="{{ asset('backend/vendor/chart.js/Chart.min.js') }}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ asset('backend/js/demo/chart-pie-demo.js') }}"></script>
+
+<script src="https://kit.fontawesome.com/65b591d07e.js" crossorigin="anonymous"></script>
+
 
 </body>
 

@@ -18,17 +18,6 @@ class FailedTableCommand extends Command
     protected $name = 'queue:failed-table';
 
     /**
-     * The name of the console command.
-     *
-     * This name is used to identify the command during lazy loading.
-     *
-     * @var string|null
-     *
-     * @deprecated
-     */
-    protected static $defaultName = 'queue:failed-table';
-
-    /**
      * The console command description.
      *
      * @var string
@@ -44,6 +33,8 @@ class FailedTableCommand extends Command
 
     /**
      * @var \Illuminate\Support\Composer
+     *
+     * @deprecated Will be removed in a future Laravel version.
      */
     protected $composer;
 
@@ -75,9 +66,7 @@ class FailedTableCommand extends Command
             $this->createBaseMigration($table), $table
         );
 
-        $this->info('Migration created successfully.');
-
-        $this->composer->dumpAutoloads();
+        $this->components->info('Migration created successfully.');
     }
 
     /**

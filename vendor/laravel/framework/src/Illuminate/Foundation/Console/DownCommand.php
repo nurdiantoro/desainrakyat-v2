@@ -26,17 +26,6 @@ class DownCommand extends Command
                                  {--status=503 : The status code that should be used when returning the maintenance mode response}';
 
     /**
-     * The name of the console command.
-     *
-     * This name is used to identify the command during lazy loading.
-     *
-     * @var string|null
-     *
-     * @deprecated
-     */
-    protected static $defaultName = 'down';
-
-    /**
      * The console command description.
      *
      * @var string
@@ -52,7 +41,7 @@ class DownCommand extends Command
     {
         try {
             if ($this->laravel->maintenanceMode()->active()) {
-                $this->comment('Application is already down.');
+                $this->components->info('Application is already down.');
 
                 return 0;
             }
@@ -64,13 +53,14 @@ class DownCommand extends Command
                 file_get_contents(__DIR__.'/stubs/maintenance-mode.stub')
             );
 
-            $this->laravel->get('events')->dispatch(MaintenanceModeEnabled::class);
+            $this->laravel->get('events')->dispatch(new MaintenanceModeEnabled());
 
-            $this->comment('Application is now in maintenance mode.');
+            $this->components->info('Application is now in maintenance mode.');
         } catch (Exception $e) {
-            $this->error('Failed to enter maintenance mode.');
-
-            $this->error($e->getMessage());
+            $this->components->error(sprintf(
+                'Failed to enter maintenance mode: %s.',
+                $e->getMessage(),
+            ));
 
             return 1;
         }
@@ -103,7 +93,7 @@ class DownCommand extends Command
     {
         try {
             return $this->laravel->make(PreventRequestsDuringMaintenance::class)->getExcludedPaths();
-        } catch (Throwable $e) {
+        } catch (Throwable) {
             return [];
         }
     }

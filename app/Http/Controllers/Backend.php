@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GraphicDesigns;
+use App\Models\InteriorDesign;
 use App\Models\VideoEditings;
 use App\Models\Webs;
 use Illuminate\Support\Facades\Redirect;
@@ -43,6 +44,14 @@ class Backend extends Controller
         ]);
     }
 
+    public function interior()
+    {
+        return view('backend.interior', [
+            'title' => 'Admin | interior',
+            'interiors' => InteriorDesign::all(),
+        ]);
+    }
+
     // ============================================= CREATE =============================================
     public function tambahdesaingrafis(Request $request)
     {
@@ -60,45 +69,188 @@ class Backend extends Controller
         return Redirect::back();
     }
 
+    public function tambaheditvideo(Request $request)
+    {
+        $tujuan_upload = 'portfolio-files/video';
+
+        $file = $request->file('file');
+        $nama_file = time() . "_" . $file->getClientOriginalName();
+        $file->move($tujuan_upload, $nama_file);
+
+        $thumbnail = $request->file('thumbnail');
+        $nama_thumbnail = time() . "_" . $thumbnail->getClientOriginalName();
+        $thumbnail->move($tujuan_upload, $nama_thumbnail);
+
+        VideoEditings::create([
+            'judul' => $request->judul,
+            'file' => $nama_file,
+            'thumbnail' => $nama_thumbnail,
+        ]);
+
+        return Redirect::back();
+    }
+
+    public function tambahweb(Request $request)
+    {
+        $tujuan_upload = 'portfolio-files/web';
+
+        $thumbnail = $request->file('thumbnail');
+        $nama_thumbnail = time() . "_" . $thumbnail->getClientOriginalName();
+        $thumbnail->move($tujuan_upload, $nama_thumbnail);
+
+        Webs::create([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'link' => $request->link,
+            'thumbnail' => $nama_thumbnail,
+        ]);
+
+        return Redirect::back();
+    }
+
+    public function tambahinterior(Request $request)
+    {
+        $tujuan_upload = 'portfolio-files/interior';
+
+        $thumbnail = $request->file('thumbnail');
+        $nama_thumbnail = time() . "_" . $thumbnail->getClientOriginalName();
+        $thumbnail->move($tujuan_upload, $nama_thumbnail);
+
+        InteriorDesign::create([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'link' => $request->link,
+            'thumbnail' => $nama_thumbnail,
+        ]);
+
+        return Redirect::back();
+    }
+
     // ============================================= Update =============================================
     public function ubahdesaingrafis(Request $request)
     {
         $id = $request->id;
+        $judul = $request->judul;
+        $kategori = $request->kategori;
 
         if ($request->file('file') != Null) {
             $file = $request->file('file');
-            $tujuan_upload = 'portfolio-files';
+            $tujuan_upload = 'portfolio-files'; // Folder public/portofolio-files
             $nama_file = time() . "_" . $file->getClientOriginalName();
             $file->move($tujuan_upload, $nama_file);
-        }else{
-            $nama_file = $request->file('file_lama');
+        } else {
+            $nama_file = $request->file_lama;
         }
 
-        // echo $id;
-        DB::table('graphic_designs')->where('id', $id)->dd();
-        // DB::table('graphic_designs')
-        //       ->where('id', $id)
-        //       ->update([
-        //         'judul' => $request->judul,
-        //         'file' => $nama_file,
-        //         'kategori' => $request->kategori,
-        //       ]);
+        DB::table('graphic_designs')->where('id', $id)
+            ->update([
+                'judul' => $judul,
+                'file' => $nama_file,
+                'kategori' => $kategori,
+            ]);
 
-        // GraphicDesigns::where('id', $id)
-        //     ->update([
-        //         'judul' => $request->judul,
-        //         'file' => $nama_file,
-        //         'kategori' => $request->kategori,
-        //     ]);
+        return Redirect::back();
+    }
 
-        // return Redirect::back();
+    public function ubahvideo(Request $request)
+    {
+        $id = $request->id;
+        $judul = $request->judul;
+        $tujuan_upload = 'portfolio-files/video'; // Folder public/portofolio-files/video
+
+        if ($request->file('file') != Null) {
+            $file = $request->file('file');
+            $nama_file = time() . "_" . $file->getClientOriginalName();
+            $file->move($tujuan_upload, $nama_file);
+        } else {
+            $nama_file = $request->file_lama;
+        }
+
+        if ($request->file('thumbnail') != Null) {
+            $thumbnail = $request->file('thumbnail');
+            $nama_thumbnail = time() . "_" . $thumbnail->getClientOriginalName();
+            $thumbnail->move($tujuan_upload, $nama_thumbnail);
+        } else {
+            $nama_thumbnail = $request->thumbnail_lama;
+        }
+
+        VideoEditings::where('id', $id)
+            ->update([
+                'judul' => $judul,
+                'file' => $nama_file,
+                'thumbnail' => $nama_thumbnail,
+            ]);
+
+        return Redirect::back();
+    }
+
+    public function ubahweb(Request $request)
+    {
+        $id = $request->id;
+        $tujuan_upload = 'portfolio-files/web'; // Folder public/portofolio-files/web
+
+        if ($request->file('thumbnail') != Null) {
+            $thumbnail = $request->file('thumbnail');
+            $nama_thumbnail = time() . "_" . $thumbnail->getClientOriginalName();
+            $thumbnail->move($tujuan_upload, $nama_thumbnail);
+        } else {
+            $nama_thumbnail = $request->thumbnail_lama;
+        }
+
+        Webs::where('id', $id)
+            ->update([
+                'judul' => $request->judul,
+                'deskripsi' => $request->deskripsi,
+                'link' => $request->link,
+                'thumbnail' => $nama_thumbnail,
+            ]);
+
+        return Redirect::back();
+    }
+
+    public function ubahinterior(Request $request)
+    {
+        $id = $request->id;
+        $tujuan_upload = 'portfolio-files/interior'; // Folder public/portofolio-files/interior
+
+        if ($request->file('image') != Null) {
+            $thumbnail = $request->file('thumbnail');
+            $nama_thumbnail = time() . "_" . $thumbnail->getClientOriginalName();
+            $thumbnail->move($tujuan_upload, $nama_thumbnail);
+        } else {
+            $thumbnail = $request->thumbnail_lama;
+        }
+
+        InteriorDesign::where('id', $id)
+            ->update([
+                'judul' => $request->judul,
+                'deskripsi' => $request->deskripsi,
+                'link' => $request->link,
+                'thumbnail' => $nama_thumbnail,
+            ]);
+
+        return Redirect::back();
     }
 
     // ============================================= DELETE =============================================
     public function hapusdesaingrafis($id)
     {
-        $grafis = GraphicDesigns::find($id);
-        $grafis->delete();
+        GraphicDesigns::find($id)->delete();
+        return Redirect::back();
+    }
+    public function hapuseditvideo($id)
+    {
+        VideoEditings::find($id)->delete();
+        return Redirect::back();
+    }
+    public function hapusweb($id)
+    {
+        Webs::find($id)->delete();
+        return Redirect::back();
+    }
+    public function hapusinterior($id)
+    {
+        InteriorDesign::find($id)->delete();
         return Redirect::back();
     }
 }

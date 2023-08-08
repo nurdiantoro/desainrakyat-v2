@@ -14,8 +14,10 @@ use Illuminate\Queue\Connectors\SyncConnector;
 use Illuminate\Queue\Failed\DatabaseFailedJobProvider;
 use Illuminate\Queue\Failed\DatabaseUuidFailedJobProvider;
 use Illuminate\Queue\Failed\DynamoDbFailedJobProvider;
+use Illuminate\Queue\Failed\FileFailedJobProvider;
 use Illuminate\Queue\Failed\NullFailedJobProvider;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 use Laravel\SerializableClosure\SerializableClosure;
 
@@ -207,7 +209,9 @@ class QueueServiceProvider extends ServiceProvider implements DeferrableProvider
                     }
                 }
 
-                return $app->forgetScopedInstances();
+                $app->forgetScopedInstances();
+
+                return Facade::clearResolvedInstances();
             };
 
             return new Worker(
@@ -247,7 +251,13 @@ class QueueServiceProvider extends ServiceProvider implements DeferrableProvider
                 return new NullFailedJobProvider;
             }
 
-            if (isset($config['driver']) && $config['driver'] === 'dynamodb') {
+            if (isset($config['driver']) && $config['driver'] === 'file') {
+                return new FileFailedJobProvider(
+                    $config['path'] ?? $this->app->storagePath('framework/cache/failed-jobs.json'),
+                    $config['limit'] ?? 100,
+                    fn () => $app['cache']->store('file'),
+                );
+            } elseif (isset($config['driver']) && $config['driver'] === 'dynamodb') {
                 return $this->dynamoFailedJobProvider($config);
             } elseif (isset($config['driver']) && $config['driver'] === 'database-uuids') {
                 return $this->databaseUuidFailedJobProvider($config);

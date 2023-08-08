@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GraphicDesigns;
+use App\Models\InteriorDesign;
+use App\Models\VideoEditings;
+use App\Models\Webs;
 use Illuminate\Http\Request;
 
 class Frontend extends Controller
@@ -17,28 +21,32 @@ class Frontend extends Controller
     {
         return view('frontend.desaingrafis', [
             'route' => 'desaingrafis',
-            'title' => 'Desain Rakyat | Desain Grafis'
+            'title' => 'Desain Rakyat | Desain Grafis',
+            'desaingrafis' => GraphicDesigns::all(),
         ]);
     }
     public function editvideo()
     {
         return view('frontend.editvideo', [
             'route' => 'editvideo',
-            'title' => 'Desain Rakyat | Edit Video'
+            'title' => 'Desain Rakyat | Edit Video',
+            'videos' => VideoEditings::all()
         ]);
     }
     public function web()
     {
         return view('frontend.web', [
             'route' => 'web',
-            'title' => 'Desain Rakyat | Web & UI/UX'
+            'title' => 'Desain Rakyat | Web & UI/UX',
+            'webs' => Webs::all()
         ]);
     }
     public function interior()
     {
         return view('frontend.interior', [
             'route' => 'interior',
-            'title' => 'Desain Rakyat | Desain Interior'
+            'title' => 'Desain Rakyat | Desain Interior',
+            'interiors' => InteriorDesign::all()
         ]);
     }
     public function tentang()

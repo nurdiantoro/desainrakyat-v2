@@ -38,16 +38,22 @@ Route::get('/admin', [Backend::class, 'index']);
 Route::get('/admin/desaingrafis', [Backend::class, 'desaingrafis']);
 Route::get('/admin/editvideo', [Backend::class, 'editvideo']);
 Route::get('/admin/web', [Backend::class, 'web']);
+Route::get('/admin/interior', [Backend::class, 'interior']);
 
 // Create
 Route::post('/admin/desaingrafis/tambah', [Backend::class, 'tambahdesaingrafis']);
 Route::post('/admin/editvideo/tambah', [Backend::class, 'tambaheditvideo']);
 Route::post('/admin/web/tambah', [Backend::class, 'tambahweb']);
+Route::post('/admin/interior/tambah', [Backend::class, 'tambahinterior']);
 
 // Update
-Route::put('/admin/desaingrafis/ubah/{id}', [Backend::class, 'ubahdesaingrafis']);
+Route::post('/admin/desaingrafis/ubah/{id}', [Backend::class, 'ubahdesaingrafis']);
+Route::post('/admin/editvideo/ubah/{id}', [Backend::class, 'ubahvideo']);
+Route::post('/admin/web/ubah/{id}', [Backend::class, 'ubahweb']);
+Route::post('/admin/interior/ubah/{id}', [Backend::class, 'ubahinterior']);
 
 // Delete
 Route::get('/admin/desaingrafis/hapus/{id}', [Backend::class, 'hapusdesaingrafis']);
 Route::get('/admin/editvideo/hapus/{id}', [Backend::class, 'hapuseditvideo']);
 Route::get('/admin/web/hapus/{id}', [Backend::class, 'hapusweb']);
+Route::get('/admin/interior/hapus/{id}', [Backend::class, 'hapusinterior']);
