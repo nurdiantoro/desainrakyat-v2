@@ -10,11 +10,13 @@ class GridVideo extends Component
 {
     public $img;
     public $text;
-    public function __construct($img, $text)
+    public $link;
+    public function __construct($img, $text, $link)
     {
         //
         $this->img = $img;
         $this->text = $text;
+        $this->link = $link;
     }
 
     /**

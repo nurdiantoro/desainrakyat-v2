@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('video_editings', function (Blueprint $table) {
-            $table->string('thumnail')->after('file');
+        Schema::table('interior_design', function (Blueprint $table) {
+            $table->string('deskripsi')->after('thumbnail')->nullable();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('video_editings', function (Blueprint $table) {
-            // $table->dropColumn('duration');
+        Schema::table('interior_design', function (Blueprint $table) {
+            //
         });
     }
 };

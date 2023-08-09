@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GraphicDesigns;
+use App\Models\ImageInterior;
 use App\Models\InteriorDesign;
 use App\Models\VideoEditings;
 use App\Models\Webs;
@@ -52,12 +53,21 @@ class Backend extends Controller
         ]);
     }
 
+    public function interiordetail($id)
+    {
+        return view('backend.interior-detail', [
+            'title' => 'Admin | interior',
+            'interior' => InteriorDesign::where('id', $id)->first(),
+            'images' => ImageInterior::where('id_interior', $id)->get(),
+        ]);
+    }
+
     // ============================================= CREATE =============================================
     public function tambahdesaingrafis(Request $request)
     {
         $file = $request->file('file');
-        $tujuan_upload = 'portfolio-files';
         $nama_file = time() . "_" . $file->getClientOriginalName();
+        $tujuan_upload = 'portfolio-files/grafis';
         $file->move($tujuan_upload, $nama_file);
 
         GraphicDesigns::create([
@@ -73,17 +83,13 @@ class Backend extends Controller
     {
         $tujuan_upload = 'portfolio-files/video';
 
-        $file = $request->file('file');
-        $nama_file = time() . "_" . $file->getClientOriginalName();
-        $file->move($tujuan_upload, $nama_file);
-
         $thumbnail = $request->file('thumbnail');
         $nama_thumbnail = time() . "_" . $thumbnail->getClientOriginalName();
         $thumbnail->move($tujuan_upload, $nama_thumbnail);
 
         VideoEditings::create([
             'judul' => $request->judul,
-            'file' => $nama_file,
+            'file' => $request->file,
             'thumbnail' => $nama_thumbnail,
         ]);
 
@@ -118,9 +124,25 @@ class Backend extends Controller
 
         InteriorDesign::create([
             'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
             'link' => $request->link,
             'thumbnail' => $nama_thumbnail,
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return Redirect::back();
+    }
+
+    public function tambahinteriordetail(Request $request)
+    {
+        $tujuan_upload = 'portfolio-files/interior';
+
+        $image = $request->file('image');
+        $nama_image = time() . "_" . $image->getClientOriginalName();
+        $image->move($tujuan_upload, $nama_image);
+
+        ImageInterior::create([
+            'id_interior' => $request->id_interior,
+            'image' => $nama_image,
         ]);
 
         return Redirect::back();
@@ -135,7 +157,7 @@ class Backend extends Controller
 
         if ($request->file('file') != Null) {
             $file = $request->file('file');
-            $tujuan_upload = 'portfolio-files'; // Folder public/portofolio-files
+            $tujuan_upload = 'portfolio-files/grafis'; // Folder public/portofolio-files
             $nama_file = time() . "_" . $file->getClientOriginalName();
             $file->move($tujuan_upload, $nama_file);
         } else {
@@ -158,14 +180,6 @@ class Backend extends Controller
         $judul = $request->judul;
         $tujuan_upload = 'portfolio-files/video'; // Folder public/portofolio-files/video
 
-        if ($request->file('file') != Null) {
-            $file = $request->file('file');
-            $nama_file = time() . "_" . $file->getClientOriginalName();
-            $file->move($tujuan_upload, $nama_file);
-        } else {
-            $nama_file = $request->file_lama;
-        }
-
         if ($request->file('thumbnail') != Null) {
             $thumbnail = $request->file('thumbnail');
             $nama_thumbnail = time() . "_" . $thumbnail->getClientOriginalName();
@@ -177,7 +191,7 @@ class Backend extends Controller
         VideoEditings::where('id', $id)
             ->update([
                 'judul' => $judul,
-                'file' => $nama_file,
+                'file' => $request->file,
                 'thumbnail' => $nama_thumbnail,
             ]);
 
@@ -218,15 +232,15 @@ class Backend extends Controller
             $nama_thumbnail = time() . "_" . $thumbnail->getClientOriginalName();
             $thumbnail->move($tujuan_upload, $nama_thumbnail);
         } else {
-            $thumbnail = $request->thumbnail_lama;
+            $nama_thumbnail = $request->thumbnail_lama;
         }
 
         InteriorDesign::where('id', $id)
             ->update([
                 'judul' => $request->judul,
-                'deskripsi' => $request->deskripsi,
                 'link' => $request->link,
                 'thumbnail' => $nama_thumbnail,
+                'deskripsi' => $request->deskripsi,
             ]);
 
         return Redirect::back();
@@ -251,6 +265,11 @@ class Backend extends Controller
     public function hapusinterior($id)
     {
         InteriorDesign::find($id)->delete();
+        return Redirect::back();
+    }
+    public function hapusinteriordetail($id)
+    {
+        ImageInterior::find($id)->delete();
         return Redirect::back();
     }
 }

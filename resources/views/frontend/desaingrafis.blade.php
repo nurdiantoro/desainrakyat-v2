@@ -40,8 +40,8 @@
 
         <div class="w-full grid grid-cols-4 gap-4 mt-4">
             @foreach ($desaingrafis as $desain)
-                <x-grid-grafis src="{{ $desain->file }}" judul="{{ $desain->judul }}"
-                    kategori="{{ $desain->kategori }}" />
+                <x-grid-grafis src="{!! $desain->file !!}" judul="{!! $desain->judul !!}"
+                    kategori="{!! $desain->kategori !!}" />
             @endforeach
         </div>
 

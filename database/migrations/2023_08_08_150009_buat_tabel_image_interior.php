@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('interior_design', function (Blueprint $table) {
-            $table->string('thumbnail')->after('deskripsi');
+        Schema::create('image_interior', function (Blueprint $table) {
+            $table->id();
+            $table->integer('id_interior')->nullable();
+            $table->string('image')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('interior_design', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('image_interior');
     }
 };

@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('video_editings', function (Blueprint $table) {
             $table->id();
 
-            $table->string('judul');
-            $table->string('file');
+            $table->string('judul')->nullable();
+            $table->string('file')->nullable();
+            $table->string('thumbnail')->nullable();
             // $table->string('kategori');
 
             $table->timestamps();

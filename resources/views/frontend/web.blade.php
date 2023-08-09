@@ -38,8 +38,8 @@
 
         <div class="grid grid-cols-4 gap-4 w-full mt-4">
             @foreach ($webs as $web)
-                <x-grid-web judul="{{ $web->judul }}" thumbnail="{{ $web->image }}" link="{{ $web->link }}"
-                    deskripsi="{{ $web->deskripsi }}" />
+                <x-grid-web judul="{!! $web->judul !!}" thumbnail="{!! $web->thumbnail !!}"
+                    link="{!! $web->link !!}" deskripsi="{!! $web->deskripsi !!}" />
             @endforeach
         </div>
 

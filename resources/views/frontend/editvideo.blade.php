@@ -36,7 +36,8 @@
 
         <div class="grid grid-cols-4 gap-4 w-full mt-4">
             @foreach ($videos as $video)
-                <x-grid-video text="{{ $video->judul }}" img="{{ $video->thumbnail }}" />
+                <x-grid-video text="{!! $video->judul !!}" img="{!! $video->thumbnail !!}"
+                    link="{!! $video->file !!}" />
             @endforeach
         </div>
 

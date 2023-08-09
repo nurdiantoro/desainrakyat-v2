@@ -1,7 +1,7 @@
 <div class="drop-shadow-01 w-full rounded-md border bg-white p-2 flex flex-col">
-    <div class="group relative aspect-video overflow-hidden rounded bg-gray-200"
-        data-modal="https://www.youtube.com/embed/tfGSNMEhBw8?autoplay=1" onclick="openModal(this)">
-        <img src="{{ asset('portfolio-files/video/' . $img) }}" class="h-full w-full rounded object-cover">
+    <div class="group relative overflow-hidden rounded bg-gray-200" data-modal="{{ $link }}"
+        onclick="openModal(this)">
+        <img src="{{ asset('portfolio-files/video/' . $img) }}" class="h-full aspect-video rounded object-cover">
         <span
             class="text-warna-02 absolute left-1/2 top-1/2 z-20 translate-x-[-50%] translate-y-[-50%] text-[2rem] opacity-0 duration-300 ease-in-out group-hover:opacity-100">
             <i class="fa-solid fa-play"></i>

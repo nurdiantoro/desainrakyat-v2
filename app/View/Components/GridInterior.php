@@ -10,11 +10,13 @@ class GridInterior extends Component
 {
     public $judul;
     public $link;
+    public $thumbnail;
     public $deskripsi;
-    public function __construct($judul, $link, $deskripsi)
+    public function __construct($judul, $link, $thumbnail, $deskripsi)
     {
         $this->judul = $judul;
         $this->link = $link;
+        $this->thumbnail = $thumbnail;
         $this->deskripsi = $deskripsi;
     }
 

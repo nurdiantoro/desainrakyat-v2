@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('video_editings', function (Blueprint $table) {
-            $table->string('thumbnail')->after('file');
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama')->nullable();
+            $table->string('foto')->nullable();
+            $table->string('review_by')->nullable();
+            $table->string('review')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('video_editings', function (Blueprint $table) {
-            $table->dropColumn('thumnail');
-        });
+        Schema::dropIfExists('reviews');
     }
 };

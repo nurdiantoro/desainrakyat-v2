@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('webs', function (Blueprint $table) {
             $table->id();
 
-            $table->string('judul');
-            $table->text('deskripsi');
-            $table->string('link');
-            $table->string('thumbnail');
+            $table->string('judul')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->string('link')->nullable();
+            $table->string('thumbnail')->nullable();
 
             $table->timestamps();
         });

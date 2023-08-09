@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('interior_design', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('link');
-            $table->string('deskripsi');
+            $table->string('link')->nullable();
+            $table->string('thumbnail');
             $table->timestamps();
         });
     }

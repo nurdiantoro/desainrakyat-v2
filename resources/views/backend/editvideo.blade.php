@@ -11,7 +11,7 @@
             <tr>
                 <td>Judul</td>
                 <td>Thumbnail</td>
-                <td>File</td>
+                <td>Link</td>
                 <td>Action</td>
             </tr>
         </thead>
@@ -24,8 +24,7 @@
                             class="img-thumbnail"style="height: 50px">
                     </td>
                     <td>
-                        <a href="{{ asset('portfolio-files/video/' . $video->file) }}"
-                            target="blank">{{ asset('portfolio-files/video/' . $video->file) }}</a>
+                        <a href="{!! $video->file !!}" target="blank">{!! $video->file !!}</a>
                     </td>
                     <td>
                         <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
@@ -51,8 +50,8 @@
                     <label>Judul</label>
                     <input type="text" class="form-control mb-2" placeholder="Judul" name="judul">
                     <br>
-                    <label>File</label>
-                    <input type="file" class="form-control mb-2" placeholder="File" name="file">
+                    <label>Link</label>
+                    <input type="text" class="form-control mb-2" placeholder="File" name="file">
                     <br>
                     <label>Thumbnail</label>
                     <input type="file" class="form-control mb-2" placeholder="Thumbnail" name="thumbnail">
@@ -72,7 +71,7 @@
                 <form class="modal-content" enctype="multipart/form-data" method="POST"
                     action="/admin/editvideo/ubah/{{ $video->id }}">
                     @csrf
-                    <input type="text" name="id" value="{{ $video->id }}">
+                    <input type="hidden" name="id" value="{{ $video->id }}">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Ubah Desain Grafis</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -80,9 +79,8 @@
                     <div class="modal-body">
                         <label>Judul</label>
                         <input type="text" class="form-control mb-2" name="judul" value="{{ $video->judul }}">
-                        <label>File</label>
-                        <input type="file" class="form-control mb-2" name="file">
-                        <input type="hidden" name="file_lama" value="{{ $video->file }}">
+                        <label>Link</label>
+                        <input type="text" class="form-control mb-2" name="file" value="{{ $video->file }}">
                         <label>Thumbnail</label>
                         <input type="file" class="form-control mb-2" name="thumbnail">
                         <input type="hidden" name="thumbnail_lama" value="{{ $video->thumbnail }}">

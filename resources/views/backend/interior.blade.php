@@ -9,11 +9,11 @@
     <table class="table table-hover">
         <thead class="table-primary">
             <tr>
-                <td>Thumbnail</td>
-                <td>Judul</td>
-                <td>Link</td>
-                <td>Deskripsi</td>
-                <td>Action</td>
+                <th>Thumbnail</th>
+                <th>Judul</th>
+                <th>Link</th>
+                <th>Deskripsi</th>
+                <th width="20%">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +27,7 @@
                     <td>{{ $interior->link }}</td>
                     <td>{{ $interior->deskripsi }}</td>
                     <td>
+                        <a href="{{ url('admin/interior/' . $interior->id) }}" class="btn btn-primary btn-sm">Image</a>
                         <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
                             data-bs-target="#modal-{{ $interior->id }}">Update</button>
                         <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
@@ -52,9 +53,9 @@
                     <label>Thumbnail</label>
                     <input type="file" class="form-control mb-2" placeholder="File" name="thumbnail">
                     <label>Link</label>
-                    <input type="text" class="form-control mb-2" placeholder="File" name="link">
-                    <label>Deskripsi</label>
-                    <textarea name="deskripsi" class="form-control mb-2" cols="30" rows="10"></textarea>
+                    <input type="text" class="form-control mb-2" placeholder="Link" name="link">
+                    <label>Link</label>
+                    <textarea name="deskripsi" class="form-control mb-2" rows="10"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -71,7 +72,7 @@
                 <form class="modal-content" enctype="multipart/form-data" method="POST"
                     action="/admin/interior/ubah/{{ $interior->id }}">
                     @csrf
-                    <input type="text" name="id" value="{{ $interior->id }}">
+                    <input type="hidden" name="id" value="{{ $interior->id }}">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Ubah Desain Grafis</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -85,8 +86,8 @@
                             name="thumbnail_lama">
                         <label>Link</label>
                         <input type="text" class="form-control mb-2" value="{{ $interior->link }}" name="link">
-                        <label>Deskripsi</label>
-                        <textarea name="deskripsi" class="form-control mb-2" cols="30" rows="10">{{ $interior->deskripsi }}</textarea>
+                        <label>Link</label>
+                        <textarea name="deskripsi" class="form-control mb-2" rows="10">{{ $interior->deskripsi }}</textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

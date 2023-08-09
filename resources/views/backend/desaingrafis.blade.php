@@ -19,7 +19,8 @@
             @foreach ($desains as $desain)
                 <tr>
                     <td>
-                        <img src="{{ asset('portfolio-files/' . $desain->file) }}" class="img-thumbnail"style="height: 50px">
+                        <img src="{{ asset('portfolio-files/grafis/' . $desain->file) }}"
+                            class="img-thumbnail"style="height: 50px">
                     </td>
                     <td>{{ $desain->judul }}</td>
                     <td>{{ $desain->kategori }}</td>
