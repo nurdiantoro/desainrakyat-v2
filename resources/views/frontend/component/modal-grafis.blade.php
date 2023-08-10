@@ -18,7 +18,7 @@
         var modalImg = document.getElementById("modalImage");
 
         modal.style.display = "block";
-        modalImg.src = that.getAttribute('data-modal');
+        modalImg.src = that.getAttribute('src');
         document.body.style.overflow = "hidden";
     }
 

@@ -11,10 +11,10 @@
 
         <div class="topbar-divider d-none d-sm-block"></div>
         <div class="my-auto">
-            <a class="btn btn-primary btn-sm" href="#" data-toggle="modal" data-target="#logoutModal">
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#logoutModal">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                 Logout
-            </a>
+            </button>
         </div>
 
     </ul>

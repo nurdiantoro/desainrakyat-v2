@@ -13,6 +13,7 @@
     </div>
 </div>
 
+
 <script>
     function openModal(that) {
         var modal = document.getElementById("myModal");
@@ -27,7 +28,7 @@
         var modal = document.getElementById("myModal");
 
         modal.style.display = "none";
-        modalImg.src = '';
+        modalImg.removeAttribute("src");
         document.body.style.overflow = "";
     }
 </script>

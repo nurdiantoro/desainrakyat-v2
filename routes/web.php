@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth;
+use App\Http\Controllers\Authentication;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend;
 use App\Http\Controllers\Backend;
@@ -20,8 +20,9 @@ use App\Http\Controllers\Test;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/login', [Auth::class, 'login'])->name('login');
-Route::post('/login', [Auth::class, 'LoginAction']);
+Route::get('/login', [Authentication::class, 'login'])->middleware('guest')->name('login');
+Route::post('/login', [Authentication::class, 'LoginAction']);
+Route::get('/logout', [Authentication::class, 'logout']);
 
 // Frontend
 Route::get('/', [Frontend::class, 'index']);

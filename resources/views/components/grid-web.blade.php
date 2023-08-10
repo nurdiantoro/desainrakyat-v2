@@ -7,9 +7,9 @@
         <p class="text-warna-03 text-sm">{{ $judul }}</p>
         <p class="text-black-45 text-sm font-normal">{{ $deskripsi }}</p>
         @if ($link != '')
-            <a href="{{ $link }}" class="mt-8 pb-2">
+            <a href="{{ $link }}" class="mt-8 pb-2" target="blank">
                 <span
-                    class="text-warna-01 bg-white-01 mt-auto items-end rounded-md p-2 text-center text-sm font-normal">Kunjungi
+                    class="text-white bg-warna-01 opacity-90 hover:opacity-100 mt-auto items-end rounded-md py-2 px-4 text-center text-sm font-normal">Kunjungi
                     Website</span>
             </a>
         @endif

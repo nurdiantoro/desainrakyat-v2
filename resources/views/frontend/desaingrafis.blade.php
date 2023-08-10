@@ -56,5 +56,5 @@
         </nav>
     </div>
 </section>
-@include('frontend.component.modal')
+@include('frontend.component.modal-grafis')
 @include('frontend.component.footer')
