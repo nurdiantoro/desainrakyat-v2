@@ -55,5 +55,5 @@
         </nav>
     </div>
 </section>
-@include('frontend.component.modal')
+@include('frontend.component.modal-interior')
 @include('frontend.component.footer')

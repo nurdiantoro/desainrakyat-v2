@@ -43,7 +43,7 @@
             <form class="modal-content" enctype="multipart/form-data" method="POST" action="/admin/editvideo/tambah">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah video Grafis</h5>
+                    <h5 class="modal-title">Tambah video</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -55,6 +55,7 @@
                     <br>
                     <label>Thumbnail</label>
                     <input type="file" class="form-control mb-2" placeholder="Thumbnail" name="thumbnail">
+                    <small class="text-danger">*Max 720px X 720px atau dibawah 500kb</small>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -84,6 +85,7 @@
                         <label>Thumbnail</label>
                         <input type="file" class="form-control mb-2" name="thumbnail">
                         <input type="hidden" name="thumbnail_lama" value="{{ $video->thumbnail }}">
+                        <small class="text-danger">*Max 720px X 720px atau dibawah 500kb</small>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

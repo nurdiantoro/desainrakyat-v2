@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\GraphicDesigns;
+use App\Models\Highlight;
 use App\Models\InteriorDesign;
+use App\Models\Review;
 use App\Models\VideoEditings;
 use App\Models\Webs;
 use Illuminate\Http\Request;
@@ -15,6 +17,7 @@ class Frontend extends Controller
         return view('frontend.index', [
             'route' => 'index',
             'title' => 'Desain Rakyat | Desain Murah, Harga Merakyat!',
+            'highlights' => Highlight::all()
         ]);
     }
     public function desaingrafis()
@@ -53,7 +56,8 @@ class Frontend extends Controller
     {
         return view('frontend.tentang', [
             'route' => 'tentang',
-            'title' => 'Desain Rakyat | Tentang Kami'
+            'title' => 'Desain Rakyat | Tentang Kami',
+            'reviews' => Review::all()
         ]);
     }
 }

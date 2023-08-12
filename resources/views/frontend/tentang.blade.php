@@ -31,22 +31,21 @@
     <div class="container mb-32">
         <h2 class="text-black-90 mb-2 text-center text-2xl font-bold drop-shadow">KATA MEREKA</h2>
         <div class="flex flex-row flex-wrap justify-center">
-            <?php for($i=0; $i<5;$i++){ ?>
-            <div class="w-[33%] p-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="rounded-md border bg-white p-4">
-                    <div class="mb-2 flex items-center gap-4">
-                        <img src="{{ asset('assets/img/lidya.jpg') }}" class="h-14 rounded-full object-contain">
-                        <div class="flex flex-col">
-                            <span>Lidya Rahma</span>
-                            <span class="text-warna-03 text-sm font-normal italic">WhatsApp Chat</span>
+            @foreach ($reviews as $review)
+                <div class="w-[33%] p-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="rounded-md border bg-white p-4">
+                        <div class="mb-2 flex items-center gap-4">
+                            <img src="{{ asset('portfolio-files/review/' . $review->foto) }}"
+                                class="h-14 w-14 rounded-full object-contain">
+                            <div class="flex flex-col">
+                                <span>{{ $review->nama }}</span>
+                                <span class="text-warna-03 text-sm font-normal italic">{{ $review->review_by }}</span>
+                            </div>
                         </div>
+                        <p class="text-black-60 text-sm">{{ $review->review }}</p>
                     </div>
-                    <p class="text-black-60 text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error
-                        odit veniam incidunt sed dolorem fuga aspernatur doloribus! Repudiandae doloribus, magni autem
-                        quos, laudantium pariatur, officia placeat dicta ipsam quia nemo.</p>
                 </div>
-            </div>
-            <?php }?>
+            @endforeach
         </div>
     </div>
 </section>

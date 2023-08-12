@@ -49,7 +49,7 @@
                 <div class="modal-body">
                     <label>Judul</label>
                     <input type="text" class="form-control mb-2" placeholder="Judul" name="judul">
-                    <label>Thumbnail</label>
+                    <label>Thumbnail</label><small class="text-danger">*Max 720px X 720px atau dibawah 500kb</small>
                     <input type="file" class="form-control mb-2" placeholder="File" name="thumbnail">
                     <label>Link</label>
                     <input type="text" class="form-control mb-2" placeholder="File" name="link">
@@ -71,7 +71,7 @@
                 <form class="modal-content" enctype="multipart/form-data" method="POST"
                     action="/admin/web/ubah/{{ $web->id }}">
                     @csrf
-                    <input type="text" name="id" value="{{ $web->id }}">
+                    <input type="hidden" name="id" value="{{ $web->id }}">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Ubah Desain Grafis</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -79,7 +79,7 @@
                     <div class="modal-body">
                         <label>Judul</label>
                         <input type="text" class="form-control mb-2" value="{{ $web->judul }}" name="judul">
-                        <label>Thumbnail</label>
+                        <label>Thumbnail</label><small class="text-danger">*Max 720px X 720px atau dibawah 500kb</small>
                         <input type="file" class="form-control mb-2" name="thumbnail">
                         <input type="hidden" class="form-control mb-2" value="{{ $web->thumbnail }}" name="thumbnail_lama">
                         <label>Link</label>

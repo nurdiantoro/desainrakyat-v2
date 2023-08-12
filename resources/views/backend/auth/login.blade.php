@@ -62,8 +62,9 @@
                                         @enderror
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" name="remember_me">
-                                                <label class="custom-control-label" for="customCheck">Remember
+                                                <input type="checkbox" class="form-check-input" name="remember_me"
+                                                    onclick="">
+                                                <label>Remember
                                                     Me</label>
                                             </div>
                                         </div>

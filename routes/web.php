@@ -40,6 +40,7 @@ Route::prefix('admin/')->middleware('auth')->group(function () {
     Route::get('/web', [Backend::class, 'web']);
     Route::get('/interior', [Backend::class, 'interior']);
     Route::get('/interior/{id}', [Backend::class, 'interiordetail']);
+    Route::get('/review', [Backend::class, 'review']);
 
     // Create
     Route::post('/desaingrafis/tambah', [Backend::class, 'tambahdesaingrafis']);
@@ -47,12 +48,15 @@ Route::prefix('admin/')->middleware('auth')->group(function () {
     Route::post('/web/tambah', [Backend::class, 'tambahweb']);
     Route::post('/interior/tambah', [Backend::class, 'tambahinterior']);
     Route::post('/interiordetail/tambah', [Backend::class, 'tambahinteriordetail']);
+    Route::post('/review/tambah', [Backend::class, 'tambahreview']);
 
     // Update
+    Route::post('/highlight/ubah/{id}', [Backend::class, 'ubahhighlight']);
     Route::post('/desaingrafis/ubah/{id}', [Backend::class, 'ubahdesaingrafis']);
     Route::post('/editvideo/ubah/{id}', [Backend::class, 'ubahvideo']);
     Route::post('/web/ubah/{id}', [Backend::class, 'ubahweb']);
     Route::post('/interior/ubah/{id}', [Backend::class, 'ubahinterior']);
+    Route::post('/review/ubah/{id}', [Backend::class, 'ubahreview']);
 
     // Delete
     Route::get('/desaingrafis/hapus/{id}', [Backend::class, 'hapusdesaingrafis']);
@@ -60,4 +64,5 @@ Route::prefix('admin/')->middleware('auth')->group(function () {
     Route::get('/web/hapus/{id}', [Backend::class, 'hapusweb']);
     Route::get('/interior/hapus/{id}', [Backend::class, 'hapusinterior']);
     Route::get('/interiordetail/hapus/{id}', [Backend::class, 'hapusinteriordetail']);
+    Route::get('/review/hapus/{id}', [Backend::class, 'hapusreview']);
 });

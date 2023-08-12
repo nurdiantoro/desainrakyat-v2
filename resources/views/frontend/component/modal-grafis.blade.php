@@ -5,7 +5,7 @@
     <!-- Modal Content -->
     <div class="fixed inset-0 w-[800px] aspect-video flex items-center justify-center m-auto">
         <div class="modal-content bg-white rounded-lg p-4">
-            <img class="w-full h-auto mb-4 rounded-md" id="modalImage">
+            <img class="w-full h-auto max-h-[500px] mb-4 rounded-md" id="modalImage">
             <button class="close hover:border-warna-01 rounded-md border px-4 py-2 shadow m-auto block"
                 onclick="closeModal()">Tutup</button>
         </div>

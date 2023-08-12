@@ -50,7 +50,7 @@
                 <div class="modal-body">
                     <label>Judul</label>
                     <input type="text" class="form-control mb-2" placeholder="Judul" name="judul">
-                    <label>Thumbnail</label>
+                    <label>Thumbnail</label><small class="text-danger">*Max 720px X 720px atau dibawah 500kb</small>
                     <input type="file" class="form-control mb-2" placeholder="File" name="thumbnail">
                     <label>Link</label>
                     <input type="text" class="form-control mb-2" placeholder="Link" name="link">
@@ -80,7 +80,7 @@
                     <div class="modal-body">
                         <label>Judul</label>
                         <input type="text" class="form-control mb-2" value="{{ $interior->judul }}" name="judul">
-                        <label>Thumbnail</label>
+                        <label>Thumbnail</label><small class="text-danger">*Max 720px X 720px atau dibawah 500kb</small>
                         <input type="file" class="form-control mb-2" name="thumbnail">
                         <input type="hidden" class="form-control mb-2" value="{{ $interior->thumbnail }}"
                             name="thumbnail_lama">

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GraphicDesigns;
+use App\Models\Highlight;
 use App\Models\ImageInterior;
 use App\Models\InteriorDesign;
+use App\Models\Review;
 use App\Models\VideoEditings;
 use App\Models\Webs;
 use Illuminate\Support\Facades\Redirect;
@@ -18,6 +20,7 @@ class Backend extends Controller
     {
         return view('backend.index', [
             'title' => 'Admin | Dashboard',
+            'highlights' => Highlight::all(),
         ]);
     }
 
@@ -59,6 +62,14 @@ class Backend extends Controller
             'title' => 'Admin | interior',
             'interior' => InteriorDesign::where('id', $id)->first(),
             'images' => ImageInterior::where('id_interior', $id)->get(),
+        ]);
+    }
+
+    public function review()
+    {
+        return view('backend.reviews', [
+            'title' => 'Admin | Review',
+            'reviews' => Review::all(),
         ]);
     }
 
@@ -148,7 +159,50 @@ class Backend extends Controller
         return Redirect::back();
     }
 
+    public function tambahreview(Request $request)
+    {
+        $tujuan_upload = 'portfolio-files/review';
+
+        $image = $request->file('foto');
+        $nama_image = time() . "_" . $image->getClientOriginalName();
+        $image->move($tujuan_upload, $nama_image);
+
+        Review::create([
+            'nama' => $request->nama,
+            'foto' => $nama_image,
+            'review_by' => $request->review_by,
+            'review' => $request->review,
+        ]);
+
+        return Redirect::back();
+    }
+
     // ============================================= Update =============================================
+    public function ubahhighlight(Request $request)
+    {
+        $id = $request->id;
+        $judul = $request->judul;
+        $subjudul = $request->subjudul;
+
+        if ($request->file('file') != Null) {
+            $file = $request->file('file');
+            $tujuan_upload = 'portfolio-files/highlight'; // Folder public/portofolio-files
+            $nama_file = time() . "_" . $file->getClientOriginalName();
+            $file->move($tujuan_upload, $nama_file);
+        } else {
+            $nama_file = $request->file_lama;
+        }
+
+        DB::table('highlights')->where('id', $id)
+            ->update([
+                'file' => $nama_file,
+                'judul' => $judul,
+                'subjudul' => $subjudul,
+            ]);
+
+        return Redirect::back();
+    }
+
     public function ubahdesaingrafis(Request $request)
     {
         $id = $request->id;
@@ -246,6 +300,30 @@ class Backend extends Controller
         return Redirect::back();
     }
 
+    public function ubahreview(Request $request)
+    {
+        $id = $request->id;
+        $tujuan_upload = 'portfolio-files/review'; // Folder public/portofolio-files/review
+
+        if ($request->file('foto') != Null) {
+            $foto = $request->file('foto');
+            $nama_foto = time() . "_" . $foto->getClientOriginalName();
+            $foto->move($tujuan_upload, $nama_foto);
+        } else {
+            $nama_foto = $request->foto_lama;
+        }
+
+        Review::where('id', $id)
+            ->update([
+                'nama' => $request->nama,
+                'foto' => $nama_foto,
+                'review_by' => $request->review_by,
+                'review' => $request->review,
+            ]);
+
+        return Redirect::back();
+    }
+
     // ============================================= DELETE =============================================
     public function hapusdesaingrafis($id)
     {
@@ -270,6 +348,12 @@ class Backend extends Controller
     public function hapusinteriordetail($id)
     {
         ImageInterior::find($id)->delete();
+        return Redirect::back();
+    }
+
+    public function hapusreview($id)
+    {
+        Review::find($id)->delete();
         return Redirect::back();
     }
 }

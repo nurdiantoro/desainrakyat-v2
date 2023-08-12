@@ -42,5 +42,11 @@
             <span>Desain Interior</span>
         </a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/admin/review') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Review</span>
+        </a>
+    </li>
 
 </ul>
