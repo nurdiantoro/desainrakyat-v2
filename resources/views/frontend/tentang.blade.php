@@ -3,7 +3,7 @@
 
 <section id="tentang" class="min-h-screen w-full">
     <div class="container mt-20 mb-32 flex w-full flex-col items-center justify-center">
-        <img src="{{ asset('assets/img/Logo DR.png') }}" alt="" class="h-[20rem] w-auto object-contain">
+        <img src="{{ asset('storage/img/Logo DR.png') }}" alt="" class="h-[20rem] w-auto object-contain">
         <h1>TENTANG KAMI</h1>
         <p class="text-black-60 max-w-[80%] text-center">Desain Rakyat adalah sebuah solusi bagi kamu yang memiliki usaha
             dan ingin membuat desain namun tidak memiliki karyawan yang mumpuni, kami hadir untuk teman-teman yang
@@ -11,19 +11,19 @@
             kami ya.</p>
         <div class="text-black-45 mt-8 flex flex-row gap-8 text-sm">
             <div class="flex flex-col items-center rounded-md bg-white p-2 duration-300">
-                <img src="{{ asset('assets/img/purse.png') }}" class="mb-2 h-12 object-contain">
+                <img src="{{ asset('storage/img/purse.png') }}" class="mb-2 h-12 object-contain">
                 <span class="text-center">Murah</span>
             </div>
             <div class="flex flex-col items-center rounded-md bg-white p-2 duration-300">
-                <img src="{{ asset('assets/img/chat.png') }}" class="mb-2 h-12 object-contain">
+                <img src="{{ asset('storage/img/chat.png') }}" class="mb-2 h-12 object-contain">
                 <span class="text-center">Respon<br>Cepat</span>
             </div>
             <div class="flex flex-col items-center rounded-md bg-white p-2 duration-300">
-                <img src="{{ asset('assets/img/stopwatch.png') }}" class="mb-2 h-12 object-contain">
+                <img src="{{ asset('storage/img/stopwatch.png') }}" class="mb-2 h-12 object-contain">
                 <span class="text-center">Tepat<br>Waktu</span>
             </div>
             <div class="flex flex-col items-center rounded-md bg-white p-2 duration-300">
-                <img src="{{ asset('assets/img/good-review.png') }}" class="mb-2 h-12 object-contain">
+                <img src="{{ asset('storage/img/good-review.png') }}" class="mb-2 h-12 object-contain">
                 <span class="text-center">Profesional</span>
             </div>
         </div>

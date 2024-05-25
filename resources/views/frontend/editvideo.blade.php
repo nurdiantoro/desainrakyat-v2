@@ -15,8 +15,8 @@
         </form>
         <p class="text-black-45 mt-8 mb-2 text-sm"><i>Tools yang kami gunakan :</i></p>
         <div class="flex flex-row gap-2">
-            <img src="assets/img/After Effects.png" class="h-8 w-auto object-contain opacity-75">
-            <img src="assets/img/Premiere Pro.png" class="h-8 w-auto object-contain opacity-75">
+            <img src="{{ asset('storage/img/After Effects.png') }}" class="h-8 w-auto object-contain opacity-75">
+            <img src="{{ asset('storage/img/Premiere Pro.png') }}" class="h-8 w-auto object-contain opacity-75">
         </div>
     </div>
 

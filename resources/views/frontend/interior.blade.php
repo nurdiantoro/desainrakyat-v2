@@ -16,10 +16,10 @@
         </form>
         <p class="text-black-45 mt-8 mb-2 text-sm"><i>Tools yang kami gunakan :</i></p>
         <div class="flex flex-row gap-2">
-            <img src="assets/img/Blender.png" class="h-8 w-auto object-contain opacity-75">
-            <img src="assets/img/Sketchup.png" class="h-8 w-auto object-contain opacity-75">
-            <img src="assets/img/vray.png" class="h-8 w-auto object-contain opacity-75">
-            <img src="assets/img/AutoCAD.png" class="h-8 w-auto object-contain opacity-75">
+            <img src="{{ asset('storage/img/Blender.png') }}" class="h-8 w-auto object-contain opacity-75">
+            <img src="{{ asset('storage/img/Sketchup.png') }}" class="h-8 w-auto object-contain opacity-75">
+            <img src="{{ asset('storage/img/vray.png') }}" class="h-8 w-auto object-contain opacity-75">
+            <img src="{{ asset('storage/img/AutoCAD.png') }}" class="h-8 w-auto object-contain opacity-75">
         </div>
     </div>
 

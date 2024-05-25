@@ -21,7 +21,7 @@ use App\Http\Controllers\Test;
 //     return view('welcome');
 // });
 Route::get('/login', [Authentication::class, 'login'])->middleware('guest')->name('login');
-Route::post('/login', [Authentication::class, 'LoginAction']);
+Route::post('/login', [Authentication::class, 'LoginAction'])->middleware('guest')->name('loginAction');
 Route::get('/logout', [Authentication::class, 'logout']);
 
 // Frontend

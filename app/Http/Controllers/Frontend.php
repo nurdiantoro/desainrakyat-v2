@@ -14,8 +14,7 @@ class Frontend extends Controller
 {
     public function index()
     {
-        return view('frontend.index', [
-            'route' => 'index',
+        return view('frontend.homepage', [
             'title' => 'Desain Rakyat | Desain Murah, Harga Merakyat!',
             'highlights' => Highlight::all()
         ]);
@@ -23,7 +22,6 @@ class Frontend extends Controller
     public function desaingrafis()
     {
         return view('frontend.desaingrafis', [
-            'route' => 'desaingrafis',
             'title' => 'Desain Rakyat | Desain Grafis',
             'desaingrafis' => GraphicDesigns::all(),
         ]);
@@ -31,7 +29,6 @@ class Frontend extends Controller
     public function editvideo()
     {
         return view('frontend.editvideo', [
-            'route' => 'editvideo',
             'title' => 'Desain Rakyat | Edit Video',
             'videos' => VideoEditings::all()
         ]);
@@ -39,7 +36,6 @@ class Frontend extends Controller
     public function web()
     {
         return view('frontend.web', [
-            'route' => 'web',
             'title' => 'Desain Rakyat | Web & UI/UX',
             'webs' => Webs::all()
         ]);
@@ -47,7 +43,6 @@ class Frontend extends Controller
     public function interior()
     {
         return view('frontend.interior', [
-            'route' => 'interior',
             'title' => 'Desain Rakyat | Desain Interior',
             'interiors' => InteriorDesign::all()
         ]);
@@ -55,7 +50,6 @@ class Frontend extends Controller
     public function tentang()
     {
         return view('frontend.tentang', [
-            'route' => 'tentang',
             'title' => 'Desain Rakyat | Tentang Kami',
             'reviews' => Review::all()
         ]);
